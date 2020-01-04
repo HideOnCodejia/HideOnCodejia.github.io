@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Hello World |  Jiajia
+    JVM体系结构 |  Jiajia
   </title>
   
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -31,7 +31,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-dubbo笔记" class="article article-type-post" itemscope
+  <article id="post-jvm1 (2)" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -39,7 +39,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hello World
+  JVM体系结构
 </h1>
   
 
@@ -48,8 +48,8 @@
 
     
     <div class="article-meta">
-      <a href="/2019/12/25/dubbo%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2019-12-25T13:20:46.367Z" itemprop="datePublished">2019-12-25</time>
+      <a href="/2020/01/04/jvm1%20(2)/" class="article-date">
+  <time datetime="2020-01-04T15:28:24.324Z" itemprop="datePublished">2020-01-04</time>
 </a>
       
     </div>
@@ -72,19 +72,15 @@
       
 
       
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+      <h2 id="jvm架构"><a href="#jvm架构" class="headerlink" title="jvm架构"></a>jvm架构</h2><h3 id="JVM是运行在操作系统-Win-Linux-之上的，它与硬件没有直接的交互"><a href="#JVM是运行在操作系统-Win-Linux-之上的，它与硬件没有直接的交互" class="headerlink" title="JVM是运行在操作系统(Win/Linux)之上的，它与硬件没有直接的交互"></a>JVM是运行在操作系统(Win/Linux)之上的，它与硬件没有直接的交互</h3><p> <img src="/images/jvm%E4%BD%93%E7%B3%BB.png" alt=""></p>
+<h3 id="类加载器ClassLoader"><a href="#类加载器ClassLoader" class="headerlink" title="类加载器ClassLoader"></a>类加载器ClassLoader</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ 负责加载class文件，class文件在文件开头有特定的文件标示，</span><br><span class="line">将class文件字节码内容加载到内存中，</span><br><span class="line">并将这些内容转换成方法区中的运行时数据结构并且ClassLoader只负责class文件的加载，</span><br><span class="line">至于它是否可以运行，则由Execution Engine决定</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="加载器的分类"><a href="#加载器的分类" class="headerlink" title="加载器的分类"></a>加载器的分类</h3><p> <img src="/images/%E5%8A%A0%E8%BD%BD%E5%99%A8.png" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">（Bootstrap）C++：启动类</span><br><span class="line">（Extension）Java：扩展类</span><br><span class="line">（AppClassLoader）：应用程序类</span><br><span class="line">（system）：系统类-&gt;加载classpath的所有类</span><br><span class="line">(User-defined):用户定制类</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="双亲委派"><a href="#双亲委派" class="headerlink" title="双亲委派"></a>双亲委派</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ 加载请求-&gt;父类(启动类)，如果找不到Class-&gt;子类加载.  换言之：有事找我爹</span><br><span class="line">$ 好处：保证了使用不同的类加载器最终得到的都是同样一个 Object对象</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
       <!-- 打赏 -->
@@ -95,7 +91,7 @@
         
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/25/dubbo%E7%AC%94%E8%AE%B0/" data-id="ck4zqoktf0001bgu874k4bf8r"
+      <a data-url="http://yoursite.com/2020/01/04/jvm1%20(2)/" data-id="ck4zqsabi0000g4u8doym511z"
         class="article-share-link">分享</a>
       
     </footer>
@@ -106,17 +102,8 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/01/04/jvm1%20(2)/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            JVM体系结构
-          
-        </div>
-      </a>
     
-    
-      <a href="/2019/12/25/juc/" class="article-nav-link">
+      <a href="/2019/12/25/dubbo%E7%AC%94%E8%AE%B0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">Hello World</div>
       </a>
